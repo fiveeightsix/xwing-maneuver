@@ -1,0 +1,21 @@
+{
+  "name": "xwing-maneuver",
+  "description": "X-Wing maneuver quiz.",
+  "main": "index.js",
+  "authors": [
+    "Karl Inglis <mail@karlinglis.net>"
+  ],
+  "license": "BSD-2-Clause",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "xwing-miniatures-font": "~1.0.12"
+  }
+}
