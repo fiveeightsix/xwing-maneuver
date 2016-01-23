@@ -45,7 +45,9 @@
     "copy-xwing-font": "mkdir -p dist/xwing-miniatures-font && cp -r bower_components/xwing-miniatures-font/dist/* dist/xwing-miniatures-font/",
     "build-html": "cp html/*.html dist/",
     "build-css": "node-sass scss --output dist/css",
-    "build-js": "browserify src/index.js --debug | exorcist dist/xwing-maneuver.js.map > dist/xwing-maneuver.js",
-    "start": "budo src/index.js:xwing-maneuver.js --dir dist"
+    "build-js": "browserify src/index.js | uglifyjs > dist/xwing-maneuver.min.js",
+    "build-js-debug": "browserify src/index.js --debug | exorcist dist/xwing-maneuver.js.map > dist/xwing-maneuver.js",
+    "build": "npm run build-js && npm run && build-css && npm run build html && npm run copy-xwing-font",
+    "start-dev": "budo src/index.js:xwing-maneuver.js --dir dist"
   }
 }
