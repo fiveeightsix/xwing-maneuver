@@ -1,7 +1,7 @@
 {
   "name": "xwing-maneuver",
-  "version": "0.0.0",
-  "description": "X-Wing maneuver quiz.",
+  "version": "0.0.1",
+  "description": "X-Wing miniatures maneuver quiz.",
   "main": "index.js",
   "repository": {
     "type": "git",
