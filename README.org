@@ -5,6 +5,7 @@
 #+OPTIONS: num:nil 
 #+LANGUAGE: en
 
+Try it [[http://fiveeightsix.github.io/xwing-maneuver][here]].
 
 * What is it?
 
