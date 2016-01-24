@@ -3,14 +3,22 @@ import { EventEmitter } from 'events';
 import XMQDispatcher from '../dispatcher/xmq-dispatcher.js';
 import ActionTypes from '../constants/xmq-action-types.js';
 import xws from '../xws/xws.js';
-import * as utils from '../core/utils.js';
+import { isInteger } from '../core/utils.js';
+
+
+function filterShipsByFactions(allShips, factionList) {
+  return allShips.filter((ship) => {
+    return factionList.some((f) => {
+      return ship.factions.indexOf(f.name) >= 0 && f.selected;
+    });
+  });
+}
 
 
 const CHANGE_EVENT = 'ships-change';
 
 
 // Construct ship data
-
 const allShips = (function () {
   xws.setupCardData(xws.basicCardData());
   const baseShips = xws.basicCardData().ships;
@@ -21,6 +29,9 @@ const allShips = (function () {
     })
     .filter((ship) => {
       return ship.huge !== true; // Filter out epic ships
+    })
+    .filter((ship) => {
+      return ship.maneuvers.length > 0; // Filter ships with known maneuvers
     });
 })();
 
@@ -63,15 +74,6 @@ ShipStore.dispatchToken = XMQDispatcher.register(function (action) {
   }
   
 });
-
-
-function filterShipsByFactions(allShips, factionList) {
-  return allShips.filter((ship) => {
-    return factionList.some((f) => {
-      return ship.factions.indexOf(f.name) >= 0 && f.selected;
-    });
-  });
-}
 
 
 export { ShipStore as default };
